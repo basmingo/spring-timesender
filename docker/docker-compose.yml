@@ -1,0 +1,87 @@
+version: "3"
+
+services:
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.8
+    networks:
+      - ext-network
+    ports:
+      - "2181:2181"
+    volumes:
+      - "zookeeper_data:/bitnami"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+  kafka:
+    image: docker.io/bitnami/kafka:3.3
+    networks:
+      - ext-network
+    ports:
+      - "9092:9092"
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+
+  mariadb:
+    image: mariadb
+    restart: always
+    networks:
+      - ext-network
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=message_service_database
+    ports:
+      - 3306:3306
+
+  m1:
+    container_name: spring-message-sender-m1
+    build:
+      context: ../m1/
+    image: spring-message-sender-m1:latest
+    networks:
+      - ext-network
+    ports:
+      - 8080:8080
+    depends_on:
+      - mariadb
+
+  m2:
+    container_name: spring-message-sender-m2
+    build:
+      context: ../m2/
+    image: spring-message-sender-m2:latest
+    networks:
+      - ext-network
+    ports:
+      - "8081:8081"
+    depends_on:
+      - zookeeper
+      - kafka
+
+  m3:
+    container_name: spring-message-sender-m3
+    image: spring-message-sender-m3:latest
+    build:
+      context: ../m3/
+    networks:
+      - ext-network
+    ports:
+      - "8082:8082"
+    depends_on:
+      - zookeeper
+      - kafka
+
+volumes:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local
+
+networks:
+  ext-network:
+    external: true

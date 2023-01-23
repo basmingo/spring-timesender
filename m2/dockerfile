@@ -1,0 +1,4 @@
+FROM openjdk:17
+COPY /build/libs/m2-0.0.1-SNAPSHOT.jar m2.jar
+EXPOSE 8081
+ENTRYPOINT ["java", "-jar", "m2.jar"]

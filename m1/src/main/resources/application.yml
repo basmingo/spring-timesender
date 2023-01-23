@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+application:
+  duration: 1000
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mariadb://mariadb/message_service_database?createDatabaseIfNotExist=true&useSSL=false
+
+  jpa:
+    hibernate:
+      ddl-auto: create

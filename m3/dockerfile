@@ -1,0 +1,4 @@
+FROM openjdk:17
+ADD /build/libs/m3-0.0.1-SNAPSHOT.jar m3.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "m3.jar"]

@@ -1,0 +1,5 @@
+rootProject.name = 'spring-timesender'
+
+include 'm1'
+include 'm2'
+include 'm3'
