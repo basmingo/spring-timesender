@@ -15,6 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ServiceHandler {
     @Getter
     private Integer totalMessagesCreated;
+    @Getter
+    private Boolean isRunning;
     private final RestTemplate restTemplate;
     private final MessageRepository messageRepository;
     private final Map<String, Integer> activeSessions;
@@ -33,11 +35,12 @@ public class ServiceHandler {
     }
 
     public void setAllServicesRunningStatus(Boolean status) {
+        isRunning = status;
         restTemplate.postForLocation(ServiceUri.M2_SERVICE_IS_RUNNING_STATUS.getUri(), status);
         restTemplate.postForLocation(ServiceUri.M3_SERVICE_IS_RUNNING_STATUS.getUri(), status);
     }
 
-    public Integer getSessionId(String sessionId) {
+    public Integer getAndUpdateSessionId(String sessionId) {
         return activeSessions.computeIfAbsent(sessionId, k -> activeSessions.size() + 1);
     }
 
