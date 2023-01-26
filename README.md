@@ -10,7 +10,7 @@ Using stack: Spring Framework, Spring Data, MariaDB, Apache Kafka, Docker, JUnit
 - m1 storing the message in a MariaDB, log amount of the messages generated duting the period
 
 
-Deployment: start docker-compose file in spring-timesender/docker
+<b>Deployment:</b> start docker-compose file in spring-timesender/docker
 
 Dependencies:
 - Kafka
