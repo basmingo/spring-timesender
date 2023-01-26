@@ -1,6 +1,6 @@
 # spring-timesender
 <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="40" height="40"/> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Apache_kafka.svg" alt="apache kafka" width="40" height="40"/>
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg" alt="docker" width="80" height="40"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg" alt="docker" width="120" height="40"/>
 
 small testing task, uses 3 microservices for a messages sending between each other.
 
