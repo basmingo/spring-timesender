@@ -12,7 +12,7 @@ Using stack: Spring Framework, Spring Data, MariaDB, Apache Kafka, Docker, JUnit
 
 <b>Deployment:</b> start docker-compose file in spring-timesender/docker
 
-Dependencies:
+<b>Dependencies:</b>
 - Kafka
 - Zookeeper
 - MariaDB
