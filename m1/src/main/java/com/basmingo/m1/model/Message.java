@@ -8,11 +8,13 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Message implements Cloneable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    @EqualsAndHashCode.include
     private Long id;
 
     @Column(name = "session_id")
