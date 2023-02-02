@@ -6,13 +6,13 @@
 The small testing task uses 3 microservices for messages sent between each other.
 
 <b>Using stack: Spring Framework, Spring Data, MariaDB, Apache Kafka, Docker, JUnit. </b>
-
+---
 - m1 sends a message to m2 using HTTP request
 - m2 sends a message to m3 using Kafka
 - m3 sends a message back to the m1
 - m1 storing the message in a MariaDB, logging amount of the messages generated during the period.
 - repeat the process until it is explicitly stopped by a command.
-
+---
 <b>Deployment:</b> start docker-compose file in spring-timesender/docker
 
 <b>Dependencies:</b>
